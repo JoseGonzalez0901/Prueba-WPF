@@ -252,6 +252,12 @@ namespace Prueba_WPF
             {
                 string received = Serial.ReadLine(); // o ReadLine() si esperas texto terminado en \n
                 Console.WriteLine($"[RX] {received}");
+                MainWindow mainWindow = (MainWindow)System.Windows.Application.Current.MainWindow;
+                mainWindow.Dispatcher.Invoke(() =>
+                {
+                    mainWindow.Counter.Content = received;
+                });
+
             }
             catch (Exception ex)
             {

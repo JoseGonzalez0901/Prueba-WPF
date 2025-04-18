@@ -16,6 +16,7 @@ namespace Prueba_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        static string data = "";    
         string selecPort= "";
         public MainWindow()
         {
@@ -55,6 +56,14 @@ namespace Prueba_WPF
             {
                 ComboBox.Items.Add(port);
             }
+        }
+        // Método para actualizar el label Counter
+        public void UpdateCounter()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                Counter.Content = data; // Actualiza el contenido del label
+            });
         }
 
     }

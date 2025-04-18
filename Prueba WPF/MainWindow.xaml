@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Send" HorizontalAlignment="Left" Margin="291,231,0,0" VerticalAlignment="Top" Click="Callback" Height="49" Width="156" Background="#FF6B69B3" BorderBrush="#FFEA0000" FontFamily="Tahoma" FontSize="20" FontWeight="Bold" Foreground="White"/>
-        <Label Content="0" HorizontalAlignment="Left" Margin="358,163,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="24" RenderTransformOrigin="1.252,0.573"/>
+        <Label x:Name="Counter" Content="0" HorizontalAlignment="Left" Margin="358,163,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="24" RenderTransformOrigin="1.252,0.573"/>
         <ComboBox x:Name="ComboBox" HorizontalAlignment="Left" Height="26" Margin="60,90,0,0" VerticalAlignment="Top" Width="87" SelectionChanged="ComboBox_SelectionChanged" DropDownOpened="Drop_Down"/>
         <Label x:Name="Indicador" HorizontalAlignment="Left" Margin="157,98,0,0" VerticalAlignment="Top" Background="#FFF90000"/>
         <ProgressBar HorizontalAlignment="Left" Height="9" Margin="291,349,0,0" VerticalAlignment="Top" Width="156"/>
