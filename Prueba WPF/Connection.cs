@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace Prueba_WPF
 {
-    internal class Connection
+    public class Connection
     {
         static SerialPort Serial;
+        public Connection()
+        {
+            Serial = new SerialPort();
+            Serial.DataReceived += SerialDataReceivedHandler;
+        }
         public static void Connect(string portName)
         {
             Serial = new SerialPort(portName, 9600);
@@ -24,7 +29,7 @@ namespace Prueba_WPF
                 Serial = null;
             }
         }
-        public static void SendData(string data)
+        public void SendData(string data)
         {
             if (Serial != null && Serial.IsOpen)
             {
@@ -235,6 +240,17 @@ namespace Prueba_WPF
             }
             return null;
         }
-
+        private static void SerialDataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                string received = Serial.ReadLine(); // o ReadLine() si esperas texto terminado en \n
+                Console.WriteLine($"[RX] {received}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al leer datos: " + ex.Message);
+            }
+        }
     }
 }

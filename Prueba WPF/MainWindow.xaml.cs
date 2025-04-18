@@ -16,6 +16,7 @@ namespace Prueba_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        string selecPort= "";
         public MainWindow()
         {
             InitializeComponent();
@@ -23,16 +24,38 @@ namespace Prueba_WPF
 
         private void Callback(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("HOla soy jose");
-            MessageBox.Show("Hello World");
-            MessageBox.Show("Hello World", "Title", MessageBoxButton.OK, MessageBoxImage.Information);
-            MessageBox.Show("Hello World", "Title", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
-            MessageBox.Show("Hello World", "Title", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes, MessageBoxOptions.DefaultDesktopOnly);
+            Connection connection = new Connection();
+            connection.SendData(Data_send.Text);
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Connection connection = new Connection();
+
+            string selectedPort = (string)ComboBox.SelectedItem;
+            if (Connection.IsPortAvailable(selectedPort))
+            {
+                Connection.Connect(selectedPort);
+                MessageBox.Show("Connected to " + selectedPort);
+                Indicador.Background = Brushes.Green;
+            }
+            else
+            {
+                Indicador.Background = Brushes.Blue;
+                MessageBox.Show("Port not available");
+            }
 
         }
+        private void Drop_Down(object sender, EventArgs e)
+        {
+            string[] availablePorts = Connection.GetAvailablePorts();
+            ComboBox.Items.Clear();
+            foreach (string port in availablePorts)
+            {
+                ComboBox.Items.Add(port);
+            }
+        }
+
     }
 }
