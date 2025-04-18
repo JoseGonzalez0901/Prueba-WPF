@@ -12,12 +12,18 @@ namespace Prueba_WPF
         static SerialPort Serial;
         public Connection()
         {
-            Serial = new SerialPort();
-            Serial.DataReceived += SerialDataReceivedHandler;
+            Serial = new SerialPort();  
         }
         public static void Connect(string portName)
         {
-            Serial = new SerialPort(portName, 9600);
+            Serial = new SerialPort(portName, 9600)
+            {
+                Parity = Parity.None,
+                DataBits = 8,
+                StopBits = StopBits.One,
+                Handshake = Handshake.None
+            };
+            Serial.DataReceived += SerialDataReceivedHandler;
             Serial.Open();
         }
         public static void Disconnect()
