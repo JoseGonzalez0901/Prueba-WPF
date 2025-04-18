@@ -24,6 +24,8 @@ namespace Prueba_WPF
         private void Callback(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Hello World");
+            MessageBox.Show("Hello World", "Title", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Hello World", "Title", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
         }
     }
 }
