@@ -20,5 +20,10 @@ namespace Prueba_WPF
         {
             InitializeComponent();
         }
+
+        private void Callback(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hello World");
+        }
     }
 }
