@@ -29,5 +29,10 @@ namespace Prueba_WPF
             MessageBox.Show("Hello World", "Title", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes);
             MessageBox.Show("Hello World", "Title", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Yes, MessageBoxOptions.DefaultDesktopOnly);
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
