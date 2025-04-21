@@ -27,6 +27,7 @@ namespace Prueba_WPF
         {
             Connection connection = new Connection();
             connection.SendData(Data_send.Text);
+            
 
         }
 
@@ -58,7 +59,7 @@ namespace Prueba_WPF
             }
         }
         // Método para actualizar el label Counter
-        public void UpdateCounter()
+        public void UpdateCounter(string data)
         {
             Dispatcher.Invoke(() =>
             {

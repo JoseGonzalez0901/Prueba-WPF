@@ -10,6 +10,8 @@ namespace Prueba_WPF
     public class Connection
     {
         static SerialPort Serial;
+        private static int i = 0; // Campo de clase estático
+
         public Connection()
         {
             Serial = new SerialPort();  
@@ -253,10 +255,7 @@ namespace Prueba_WPF
                 string received = Serial.ReadLine(); // o ReadLine() si esperas texto terminado en \n
                 Console.WriteLine($"[RX] {received}");
                 MainWindow mainWindow = (MainWindow)System.Windows.Application.Current.MainWindow;
-                mainWindow.Dispatcher.Invoke(() =>
-                {
-                    mainWindow.Counter.Content = received;
-                });
+                mainWindow.UpdateCounter(received);
 
             }
             catch (Exception ex)
